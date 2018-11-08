@@ -1,6 +1,7 @@
 package com.liukx.fastjson;
 
 
+import com.liukx.fastjson.parser.DefaultJSONParser;
 import com.liukx.fastjson.parser.ParserConfig;
 import com.liukx.fastjson.serializer.SerializeFilter;
 
@@ -31,6 +32,20 @@ public abstract class JSON implements JSONStreamAware,JSONAware {
         DEFAULT_TYPE_KEY = typeKey; //DEFAULT_TYPE_KEY不是final的
         //todo addSymbol的这个方法,为什么length,hashcode不放到方法内部呢
         ParserConfig.global.symbolTable.addSymbol(typeKey,0,typeKey.length(),typeKey.hashCode());
+    }
+
+    public static Object parse(String text){
+        return parse(text,DEFAULT_PARSER_FEATURE);
+    }
+
+    public static Object parse(String text, int features) {
+        if(text == null){
+            return null;
+        }else {
+            DefaultJSONParser parser = new DefaultJSONParser(text,ParserConfig.getGlobalInstance(),features);
+            Object value = parser.parse();
+
+        }
     }
 
 
