@@ -24,3 +24,8 @@ hs_err_pid*
 
 #exclude
 .idea
+
+#git常用命令
+#git config --list
+#git config user.name (xxxxxx)
+#git config user.email (xxxxxx)
